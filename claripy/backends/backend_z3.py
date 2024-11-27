@@ -853,6 +853,31 @@ class BackendZ3(Backend):
         sat = z3_solver_sat(solver, constraints, comment)
         if sat and model_callback is not None:
             model_callback(self._generic_model(solver.model()))
+
+
+        smt_file = open("emit.smt2", 'a')
+        mysolver = solver
+        # mysolver.add(self._op_raw_And(*[constraints_immut]))
+        f = mysolver
+        v = (z3.Ast * 0)()
+        if isinstance(f, z3.Solver):
+            # print "solver is an instance of z3.Solver"
+            a = f.assertions()
+            o = z3.Optimize(f.ctx)
+            o.add(z3.And(*a))
+            o.maximize(expr) if is_max else o.minimize(expr)
+            smt_file.write(o.sexpr())
+            # if len(a) == 0:
+            #     f = z3.BoolVal(True)
+            # else:
+            #     f = z3.And(*a)
+        # z3.Z3_set_ast_print_mode(f.ctx_ref(), z3.Z3_PRINT_SMTLIB2_COMPLIANT)
+        # ste_expr = z3.Z3_benchmark_to_smtlib_string(f.ctx_ref(), "", "QF_AUFBV", None, "", 0, v, f.as_ast())
+        # smt_file.write(ste_expr)
+        smt_file.write('\n')
+        smt_file.close()
+
+
         return hi if sat == is_max else lo
 
     @condom
