@@ -1,0 +1,5 @@
+(declare-fun syscall_stub_readlink_164_64 () (_ BitVec 64))
+(assert (and (= #b0 ((_ extract 31 31) syscall_stub_readlink_164_64))))
+(maximize (bvadd ((_ sign_extend 32) ((_ extract 31 0) syscall_stub_readlink_164_64))
+       #x07fffffffffeac50))
+(check-sat)

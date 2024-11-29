@@ -1,0 +1,5 @@
+(declare-fun mem_c0000f88_84_64 () (_ BitVec 64))
+(declare-fun mem_c0000f98_86_64 () (_ BitVec 64))
+(assert (and (not (bvule mem_c0000f98_86_64 mem_c0000f88_84_64))))
+(maximize mem_c0000f88_84_64)
+(check-sat)

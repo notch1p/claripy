@@ -1,0 +1,13 @@
+(declare-fun strlen_117_64 () (_ BitVec 64))
+(declare-fun args_3_8 () (_ BitVec 8))
+(declare-fun strlen_75_64 () (_ BitVec 64))
+(assert (and (= (ite (= #x00 args_3_8) #x07fffffffffeffd6 #x07fffffffffeffd7)
+        (bvadd #x07fffffffffeffd6 strlen_75_64))
+     (= #b0 ((_ extract 63 63) strlen_75_64))
+     (= (ite (= #x00 args_3_8) #x07fffffffffeffd6 #x07fffffffffeffd7)
+        (bvadd #x07fffffffffeffd6 strlen_117_64))
+     (= #b00000000000000000000000000000000000000000000000000000000000000
+        ((_ extract 63 2) (bvadd #x0000000000000001 strlen_117_64)))
+     (bvule (bvadd #b01 ((_ extract 1 0) strlen_117_64)) #b10)))
+(minimize (bvadd strlen_117_64 #x0000000000000001))
+(check-sat)

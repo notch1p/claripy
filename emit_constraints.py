@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # coding: utf-8
 
 """
@@ -7,6 +8,7 @@ python angr.py /bin/ls ./output
 import angr
 import logging
 import claripy
+import os
 
 # from z3 import Solver
 from z3 import *
@@ -22,7 +24,8 @@ def call_exit():
     exit()
 
 
-m_num_bound = 5000
+level_bound = 850
+m_query_bound = 10000
 
 
 def main():
@@ -48,51 +51,51 @@ def main():
 
     level = 0
     while simgr.active:
-        print("level:", level)
+        print("level:", level, ";")
         level += 1
 
         # print('state_num:', len(simgr.active))
         # print(simgr.active)
-        print("")
-        count = 0
-        for s in simgr.active:
-            solver = Solver()
-            bsolver = BackendZ3()
-            constr = s.solver.constraints
-            # logging.debug(constr)
+        # for s in simgr.active:
+        #     solver = Solver()
+        #     bsolver = BackendZ3()
+        #     constr = s.solver.constraints
+        # # logging.debug(constr)
 
-            # if constr:
-            #     z3_constr = bsolver.convert_list(constr)
-            #     solver.add(z3_constr)
-            #     if output_dir:
-            #         # filename = "{}-{}-{}".format(target_bin_name, level, count) + ".smt2"
-            #         # output_path = os.path.join(output_dir, filename)
-            #         # with open(output_path, "w") as f:
-            #         #     f.write(solver.to_smt2())
-            #         m_num_query = m_num_query + 1
-            #         # logging.info("Output constraint to: " + output_path + "\n")
-            #         # print("Output constraint to: " + output_path + "\n")
-            #     # else:
-            #     #     print(solver.to_smt2())
-            #     count += 1
-            #     if m_num_query > m_num_bound:
-            #         break
-        if m_num_query > m_num_bound:
-            break
-        simgr.step()
-
-    splitchunks(target_bin_name)
+        # if constr:
+        #     #     z3_constr = bsolver.convert_list(constr)
+        #     #     solver.add(z3_constr)
+        #     #     if output_dir:
+        #     #         # filename = "{}-{}-{}".format(target_bin_name, level, count) + ".smt2"
+        #     #         # output_path = os.path.join(output_dir, filename)
+        #     #         # with open(output_path, "w") as f:
+        #     #         #     f.write(solver.to_smt2())
+        #     m_num_query += 1
+        #     #         # logging.info("Output constraint to: " + output_path + "\n")
+        #     #         # print("Output constraint to: " + output_path + "\n")
+        #     #     # else:
+        #     #     #     print(solver.to_smt2())
+        #     #     count += 1
+        #     #     if m_num_query > m_num_bound:
+        #     #         break
+        #     if (m_num_query > m_query_bound) or (level > level_bound):
+        #         break
+        try:
+            simgr.step()
+        except:
+            splitchunks(target_bin_name, output_dir)
+            call_exit()
 
 
 def splitchunks(binary_name: str, output_dir: str, filepath: str = "emit.smt2"):
     with open(filepath, "r") as f:
         content = f.read()
-    os.mkdir(output_dir)
+    os.makedirs(output_dir)
     chunks = content.split("\n\n")
     for i, chunk in enumerate(chunks):
         if chunk == "":
             continue
-        with open(f"{binary_name}-emit-{i}.smt2", "w+") as c:
+        with open(f"{output_dir}/{binary_name}-emit-{i}.smt2", "w+") as c:
             c.write(chunk)
     os.remove(filepath)
 

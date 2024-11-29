@@ -1,0 +1,5 @@
+(declare-fun syscall_stub_readlink_518_64 () (_ BitVec 64))
+(assert (and (= #b0 ((_ extract 63 63) syscall_stub_readlink_518_64))
+     (not (bvsle #x00000000000003ff syscall_stub_readlink_518_64))))
+(maximize (bvadd #x07fffffffffe62a0 syscall_stub_readlink_518_64))
+(check-sat)

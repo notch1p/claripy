@@ -1,0 +1,7 @@
+(declare-fun strlen_118_64 () (_ BitVec 64))
+(declare-fun args_0_8 () (_ BitVec 8))
+(assert (and (bvule strlen_118_64 #xf800000000010030)
+     (= (ite (= #x00 args_0_8) #x07fffffffffeffd0 #x07fffffffffeffd1)
+        (bvadd #x07fffffffffeffd0 strlen_118_64))))
+(maximize (bvadd strlen_118_64 #x07fffffffffeffcf))
+(check-sat)

@@ -1,0 +1,6 @@
+(declare-fun args_1_8 () (_ BitVec 8))
+(assert (and (not (= #x2d args_1_8)) (not (= #x40 args_1_8))))
+(minimize (let ((a!1 (bvor (concat #b0000000 (ite (= #x2e args_1_8) #b1 #b0))
+                 (concat #b0000000 (ite (= #x24 args_1_8) #b1 #b0)))))
+  (bvadd #x07fffffffffeffd2 (concat #x00000000000000 a!1))))
+(check-sat)

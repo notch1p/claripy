@@ -1,0 +1,5 @@
+(declare-fun mem_c0001018_75_64 () (_ BitVec 64))
+(assert (and (bvule #x0000000001316a00 mem_c0001018_75_64)
+     (not (bvule #x0000000001317768 mem_c0001018_75_64))))
+(maximize (bvadd mem_c0001018_75_64 #x0000000000000018))
+(check-sat)

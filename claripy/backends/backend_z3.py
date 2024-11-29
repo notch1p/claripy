@@ -39,6 +39,9 @@ log = logging.getLogger(__name__)
 
 ALL_Z3_CONTEXTS = weakref.WeakSet()
 
+MAXIMUM_EXTREMA_CALL = 255
+EXTREMA_CALL = 0
+
 
 def handle_sigint(signals, frametype):
     if old_handler == signal.SIG_IGN:
@@ -814,6 +817,12 @@ class BackendZ3(Backend):
         """
         _max if is_max else _min
         """
+        global EXTREMA_CALL
+        if EXTREMA_CALL > MAXIMUM_EXTREMA_CALL:
+            raise Exception(f"Maximum _extrema call(={MAXIMUM_EXTREMA_CALL}) reached.")
+        else:
+            EXTREMA_CALL += 1
+            print(f"EXTREMA_CALL={EXTREMA_CALL}")
         lo = -(2 ** (expr.size() - 1)) if signed else 0
         hi = 2 ** (expr.size() - 1) - 1 if signed else 2 ** expr.size() - 1
 
@@ -854,8 +863,7 @@ class BackendZ3(Backend):
         if sat and model_callback is not None:
             model_callback(self._generic_model(solver.model()))
 
-
-        smt_file = open("emit.smt2", 'a')
+        smt_file = open("emit.smt2", "a")
         mysolver = solver
         # mysolver.add(self._op_raw_And(*[constraints_immut]))
         f = mysolver
@@ -874,9 +882,8 @@ class BackendZ3(Backend):
         # z3.Z3_set_ast_print_mode(f.ctx_ref(), z3.Z3_PRINT_SMTLIB2_COMPLIANT)
         # ste_expr = z3.Z3_benchmark_to_smtlib_string(f.ctx_ref(), "", "QF_AUFBV", None, "", 0, v, f.as_ast())
         # smt_file.write(ste_expr)
-        smt_file.write('\n')
+        smt_file.write("\n")
         smt_file.close()
-
 
         return hi if sat == is_max else lo
 
