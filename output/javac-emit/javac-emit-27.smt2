@@ -6,5 +6,6 @@
      (= #b00000000000000000000000000000000000000000000000000000000000000
         ((_ extract 63 2) (bvadd #x0000000000000001 strlen_477_64)))
      (bvule (bvadd #b01 ((_ extract 1 0) strlen_477_64)) #b10)))
-(minimize (bvadd #x0000000000000001 strlen_477_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x0000000000000001 strlen_477_64)) 
+(minimize goal)
 (check-sat)

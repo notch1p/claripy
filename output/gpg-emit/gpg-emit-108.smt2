@@ -21207,5 +21207,6 @@
        a!961
        a!972
        (or a!973 a!974))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffef1df strlen_304_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1df strlen_304_64)) 
+(minimize goal)
 (check-sat)

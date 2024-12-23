@@ -855,5 +855,6 @@
            (= #x00 ((_ extract 31 24) mem_c0000f92_181_112))
            (= #x00 ((_ extract 7 0) mem_c0000f92_181_112))
            (= #x00 ((_ extract 71 64) mem_c0000f92_181_112)))))))))))))))))))))))))))))))))))
-(minimize (bvadd strlen_705_64 #x0000000000000001))
+(define-fun goal () (_ BitVec 64) (bvadd strlen_705_64 #x0000000000000001)) 
+(minimize goal)
 (check-sat)

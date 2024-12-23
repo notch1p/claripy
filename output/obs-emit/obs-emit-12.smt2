@@ -74,5 +74,6 @@
            (not (= #x0000000000000001 strlen_66_64)))
        a!2
        a!3)))
-(minimize (bvadd #x0000000000000001 strlen_68_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x0000000000000001 strlen_68_64)) 
+(minimize goal)
 (check-sat)

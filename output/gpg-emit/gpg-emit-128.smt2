@@ -33058,5 +33058,6 @@
        (not a!970)
        (not a!991)
        (not a!1011)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffef1dc strlen_271_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1dc strlen_271_64)) 
+(maximize goal)
 (check-sat)

@@ -321,7 +321,7 @@
            (= #x0a ((_ extract 103 96) mem_fffffffffffc3bc0_95_128))
            (= #x0a ((_ extract 127 120) mem_fffffffffffc3bc0_95_128))
            (= #x0a ((_ extract 119 112) mem_fffffffffffc3bc0_95_128)))))))))))))))))))))))
-(minimize (let ((a!1 (and (not (= #x0a ((_ extract 7 0) mem_fffffffffffc3bc0_95_128)))
+(define-fun goal () (_ BitVec 64) (let ((a!1 (and (not (= #x0a ((_ extract 7 0) mem_fffffffffffc3bc0_95_128)))
                 (not (= #x0a ((_ extract 15 8) mem_fffffffffffc3bc0_95_128)))
                 (not (= #x0a ((_ extract 23 16) mem_fffffffffffc3bc0_95_128)))
                 (not (= #x0a ((_ extract 31 24) mem_fffffffffffc3bc0_95_128)))
@@ -459,5 +459,6 @@
        (bvadd #x0000000000000011
               (concat #x00000000 (ite a!1 a!17 a!25))
               (concat ((_ extract 63 4) mem_c0000f48_65_64) #x0)
-              (bvmul #xffffffffffffffff mem_c0000f48_65_64))))))))))))))))))))
+              (bvmul #xffffffffffffffff mem_c0000f48_65_64)))))))))))))))))))) 
+(minimize goal)
 (check-sat)

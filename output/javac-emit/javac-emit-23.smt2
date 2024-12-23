@@ -232,5 +232,6 @@
            (= #x00 ((_ extract 735 728) mem_7fffffffffeac50_438_1032))
            (= #x00 ((_ extract 607 600) mem_7fffffffffeac50_438_1032)))
        (= a!30 (bvadd #x07fffffffffeac50 strlen_439_64))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x0000000000000001 strlen_439_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x0000000000000001 strlen_439_64)) 
+(maximize goal)
 (check-sat)

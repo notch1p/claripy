@@ -1043,7 +1043,8 @@
            (= #xa1 args_1_8)
            (= #x8d args_1_8)
            (= #x9c args_1_8)))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffeffd0
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffeffd0
        (concat #b000000000000000000000000000000000000000000000000000000000000000
-               (ite (= #x2d args_0_8) #b1 #b0))))
+               (ite (= #x2d args_0_8) #b1 #b0)))) 
+(minimize goal)
 (check-sat)

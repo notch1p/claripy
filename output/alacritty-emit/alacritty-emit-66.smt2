@@ -65,5 +65,6 @@
            (= #x0a ((_ extract 23 16) mem_ff77df_82_128))
            (= #x0a ((_ extract 7 0) mem_ff77df_82_128))
            (= #x0a ((_ extract 15 8) mem_ff77df_82_128)))))))))))))
-(maximize (bvadd mem_c0000f50_66_64 (bvmul #xffffffffffffffff mem_c0000f48_65_64)))
+(define-fun goal () (_ BitVec 64) (bvadd mem_c0000f50_66_64 (bvmul #xffffffffffffffff mem_c0000f48_65_64))) 
+(maximize goal)
 (check-sat)

@@ -24741,5 +24741,6 @@
        (or (not (= #x24 a!471)) (not a!1081))
        (or (not (= #x3d a!471)) (not a!1081))
        (or (not (= #x59 a!471)) (not a!1081))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffef1df strlen_287_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1df strlen_287_64)) 
+(maximize goal)
 (check-sat)

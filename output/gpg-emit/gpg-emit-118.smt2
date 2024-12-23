@@ -20686,5 +20686,6 @@
            (= #x0000000000000020 strlen_285_64)
            (= #x000000000000001f strlen_285_64)
            (= #x000000000000001e strlen_285_64))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffef1de strlen_285_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1de strlen_285_64)) 
+(maximize goal)
 (check-sat)

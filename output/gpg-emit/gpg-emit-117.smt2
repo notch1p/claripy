@@ -24112,5 +24112,6 @@
            (= #x000000000000001d strlen_285_64)
            (= #x0000000000000009 strlen_285_64)
            (= #x0000000000000013 strlen_285_64))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffef1de strlen_285_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1de strlen_285_64)) 
+(minimize goal)
 (check-sat)

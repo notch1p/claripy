@@ -116,7 +116,7 @@
        a!13
        a!15
        a!17)))))
-(minimize (let ((a!1 (bvurem #x000000000a890b4f
+(define-fun goal () (_ BitVec 64) (let ((a!1 (bvurem #x000000000a890b4f
                    (concat (concat #x000000000000
                                    ((_ extract 951 944)
                                      file_1_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_120_1024))
@@ -150,5 +150,6 @@
                            file_1_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_120_1024))
                  ((_ extract 975 968)
                    file_1_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_120_1024))
-         (bvshl ((_ zero_extend 32) (ite a!4 a!5 a!3)) #x0000000000000002))))))
+         (bvshl ((_ zero_extend 32) (ite a!4 a!5 a!3)) #x0000000000000002)))))) 
+(minimize goal)
 (check-sat)

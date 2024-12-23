@@ -4089,7 +4089,7 @@
        a!507
        a!509
        a!512))))
-(minimize (let ((a!1 (ite (bvuge #x00000000000000ff
+(define-fun goal () (_ BitVec 64) (let ((a!1 (ite (bvuge #x00000000000000ff
                        (ite (bvsge #x0000000000000000
                                    filesize_file_6_/etc/gcrypt/hwf.deny_240_64)
                             #x0000000000000000
@@ -4099,5 +4099,6 @@
                      #x0000000000000000
                      filesize_file_6_/etc/gcrypt/hwf.deny_240_64)
                 #x00000000000000ff)))
-  (bvadd #x07fffffffffef1e0 a!1)))
+  (bvadd #x07fffffffffef1e0 a!1))) 
+(minimize goal)
 (check-sat)

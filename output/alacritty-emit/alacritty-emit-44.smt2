@@ -5,5 +5,6 @@
                            #b1001100010110100111111111))
                (bvule #x0000000001317768 mem_c0001018_75_64))))
   (and a!1)))
-(maximize (bvadd mem_c0001018_75_64 #x0000000000000018))
+(define-fun goal () (_ BitVec 64) (bvadd mem_c0001018_75_64 #x0000000000000018)) 
+(maximize goal)
 (check-sat)

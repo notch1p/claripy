@@ -93,9 +93,10 @@
   (and (not (= #x00000000 mem_c0080028_292_32))
        (bvule a!22
               (concat a!24 ((_ extract 191 184) mem_7fffffffffef850_169_256)))))))))))))))))
-(maximize (let ((a!1 ((_ zero_extend 32)
+(define-fun goal () (_ BitVec 64) (let ((a!1 ((_ zero_extend 32)
              ((_ extract 31 0)
                (bvurem #x00000000d1584701
                        ((_ zero_extend 32) mem_c0080028_292_32))))))
-  (bvadd (bvshl a!1 #x0000000000000002) #x00000000c0080078)))
+  (bvadd (bvshl a!1 #x0000000000000002) #x00000000c0080078))) 
+(maximize goal)
 (check-sat)

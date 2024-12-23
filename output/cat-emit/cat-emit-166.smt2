@@ -29,7 +29,7 @@
        (= #b0 ((_ extract 63 63) a!3))
        (bvule #x0000000000000001 a!3)
        (or (= #x0000000000020000 mem_7fffffffffefeb8_101_64) a!4 a!5)))))
-(maximize (let ((a!1 (and (= #b000
+(define-fun goal () (_ BitVec 64) (let ((a!1 (and (= #b000
                    ((_ extract 63 61)
                      (bvadd #xfffffffffffe0000 mem_7fffffffffefeb8_101_64)))
                 (bvule (bvadd #b1111111111111111111111111111111111111111111100000000000000000
@@ -42,5 +42,6 @@
        (ite (bvsge #x0000000000000000 filesize_file_0_?_165_64)
             #x0000000000000000
             filesize_file_0_?_165_64)
-       (ite a!1 mem_7fffffffffefeb8_101_64 #x0000000000020000))))
+       (ite a!1 mem_7fffffffffefeb8_101_64 #x0000000000020000)))) 
+(maximize goal)
 (check-sat)

@@ -15107,7 +15107,7 @@
        a!1530
        a!1532
        a!1535))))))))))))))))))))))))))))))))
-(maximize (let ((a!1 (ite (bvuge #x00000000000000ff
+(define-fun goal () (_ BitVec 64) (let ((a!1 (ite (bvuge #x00000000000000ff
                        (ite (bvsge #x0000000000000000
                                    filesize_file_0_/etc/gcrypt/hwf.deny_220_64)
                             #x0000000000000000
@@ -15122,5 +15122,6 @@
                 #x0000000000000000
                 (bvsub filesize_file_0_/etc/gcrypt/hwf.deny_220_64 a!1))))
   (bvadd #x07fffffffffef1e0
-         (ite (bvuge #x00000000000000ff a!2) a!2 #x00000000000000ff)))))
+         (ite (bvuge #x00000000000000ff a!2) a!2 #x00000000000000ff))))) 
+(maximize goal)
 (check-sat)

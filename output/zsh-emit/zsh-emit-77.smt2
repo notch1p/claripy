@@ -241,7 +241,8 @@
   (and (not (bvule #b0000000000001 a!33))
        (bvule #b000000010 (concat args_0_8 #b0))
        (= #x0000000000000000 (bvnot a!37)))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffeffd0
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffeffd0
        (concat #b000000000000000000000000000000000000000000000000000000000000000
-               (ite (= #x2d args_0_8) #b1 #b0))))
+               (ite (= #x2d args_0_8) #b1 #b0)))) 
+(maximize goal)
 (check-sat)

@@ -11,5 +11,6 @@
      (bvule (bvadd #b01 ((_ extract 1 0) strlen_70_64)) #b10)
      (= (ite (= #x00 args_0_8) #x07fffffffffeffd0 #x07fffffffffeffd1)
         (bvadd #x07fffffffffeffd0 strlen_84_64))))
-(maximize (bvadd strlen_84_64 #x0000000000000001))
+(define-fun goal () (_ BitVec 64) (bvadd strlen_84_64 #x0000000000000001)) 
+(maximize goal)
 (check-sat)

@@ -1,5 +1,6 @@
 (declare-fun syscall_stub_readlink_373_64 () (_ BitVec 64))
 (assert (and (= #b0 ((_ extract 31 31) syscall_stub_readlink_373_64))))
-(maximize (bvadd ((_ sign_extend 32) ((_ extract 31 0) syscall_stub_readlink_373_64))
-       #x07fffffffffeac50))
+(define-fun goal () (_ BitVec 64) (bvadd ((_ sign_extend 32) ((_ extract 31 0) syscall_stub_readlink_373_64))
+       #x07fffffffffeac50)) 
+(maximize goal)
 (check-sat)

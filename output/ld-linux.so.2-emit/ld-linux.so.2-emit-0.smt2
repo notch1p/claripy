@@ -15,7 +15,7 @@
        (or (bvsge #x00000000 filesize_file_2_/_20_32)
            (= #b00000000000000000000000000
               ((_ extract 31 6) filesize_file_2_/_20_32))))))
-(minimize (let ((a!1 (and (or (bvsge #x00000000 filesize_file_2_/_20_32)
+(define-fun goal () (_ BitVec 32) (let ((a!1 (and (or (bvsge #x00000000 filesize_file_2_/_20_32)
                     (= #b0000000000000000000000
                        ((_ extract 31 10) filesize_file_2_/_20_32)))
                 (bvule (ite (bvsge #x00000000 filesize_file_2_/_20_32)
@@ -28,5 +28,6 @@
                             #x00000000
                             filesize_file_2_/_20_32)
                        #x00000200))))
-  (bvadd #x00000200 a!2))))
+  (bvadd #x00000200 a!2)))) 
+(minimize goal)
 (check-sat)

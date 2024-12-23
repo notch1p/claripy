@@ -63,8 +63,9 @@
        a!23
        a!25
        a!27)))))))))
-(minimize (let ((a!1 ((_ zero_extend 24)
+(define-fun goal () (_ BitVec 64) (let ((a!1 ((_ zero_extend 24)
              ((_ extract 7 0)
                (bvlshr ((_ zero_extend 56) args_1_8) #x0000000000000005)))))
-  (bvadd #x00000000c0000f88 (bvshl ((_ zero_extend 32) a!1) #x0000000000000002))))
+  (bvadd #x00000000c0000f88 (bvshl ((_ zero_extend 32) a!1) #x0000000000000002)))) 
+(minimize goal)
 (check-sat)

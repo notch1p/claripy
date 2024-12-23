@@ -2,5 +2,6 @@
 (declare-fun args_1_8 () (_ BitVec 8))
 (assert (and (= (ite (= #x00 args_1_8) #x07fffffffffeffd2 #x07fffffffffeffd3)
         (bvadd #x07fffffffffeffd2 strlen_110_64))))
-(maximize (bvadd strlen_110_64 #x0000000000000001))
+(define-fun goal () (_ BitVec 64) (bvadd strlen_110_64 #x0000000000000001)) 
+(maximize goal)
 (check-sat)

@@ -34372,5 +34372,6 @@
        a!1167
        a!1207
        (or a!1208 a!1209))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffef1e1 strlen_326_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1e1 strlen_326_64)) 
+(maximize goal)
 (check-sat)

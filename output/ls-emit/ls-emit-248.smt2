@@ -87,7 +87,8 @@
        (bvule #b000000010 (concat args_1_8 #b0))
        a!22
        (or (= #x1f args_1_8) (not a!45)))))))))))))))))))))))))))
-(minimize (bvadd #x000000000041c65c
+(define-fun goal () (_ BitVec 64) (bvadd #x000000000041c65c
        (bvshl ((_ zero_extend 32) ((_ zero_extend 24) args_1_8))
-              #x0000000000000002)))
+              #x0000000000000002))) 
+(minimize goal)
 (check-sat)

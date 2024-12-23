@@ -20,5 +20,6 @@
        (= (ite (= #x00 args_1_8) #x07fffffffffeffd2 #x07fffffffffeffd3)
           (bvadd #x07fffffffffeffd2 strlen_59_64))
        a!1)))
-(maximize (bvadd #x000000000000004c strlen_57_64 strlen_59_64 strlen_61_64 strlen_63_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x000000000000004c strlen_57_64 strlen_59_64 strlen_61_64 strlen_63_64)) 
+(maximize goal)
 (check-sat)

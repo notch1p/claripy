@@ -3,5 +3,6 @@
 (assert (and (= (ite (= #x00 args_3_8) #x07fffffffffeffd6 #x07fffffffffeffd7)
         (bvadd #x07fffffffffeffd6 strlen_477_64))
      (not (= #x2d args_3_8))))
-(maximize (bvadd #x0000000000000001 strlen_477_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x0000000000000001 strlen_477_64)) 
+(maximize goal)
 (check-sat)

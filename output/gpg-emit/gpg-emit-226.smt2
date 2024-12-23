@@ -21557,5 +21557,6 @@
        a!1047
        a!1048
        (or a!1049 a!1050))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffef1df strlen_338_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1df strlen_338_64)) 
+(maximize goal)
 (check-sat)

@@ -92,7 +92,8 @@
        a!21
        (not (= #x20 args_1_8))
        (or (= #x1f args_1_8) (not a!44)))))))))))))))))))))))))))
-(minimize (bvadd (bvshl ((_ zero_extend 32) ((_ zero_extend 24) args_1_8))
+(define-fun goal () (_ BitVec 64) (bvadd (bvshl ((_ zero_extend 32) ((_ zero_extend 24) args_1_8))
               #x0000000000000001)
-       #x00000000c0000101))
+       #x00000000c0000101)) 
+(minimize goal)
 (check-sat)

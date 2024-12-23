@@ -30,7 +30,8 @@
        (not (= #x2d args_1_8))
        a!7
        (or (not (= #x00 a!1)) (= #x01 a!1) (not (= #x5f args_1_8))))))))))))
-(minimize (let ((a!1 (bvor (concat #b0000000 (ite (= #x2e args_1_8) #b1 #b0))
+(define-fun goal () (_ BitVec 64) (let ((a!1 (bvor (concat #b0000000 (ite (= #x2e args_1_8) #b1 #b0))
                  (concat #b0000000 (ite (= #x24 args_1_8) #b1 #b0)))))
-  (bvadd #x07fffffffffeffd2 (concat #x00000000000000 a!1))))
+  (bvadd #x07fffffffffeffd2 (concat #x00000000000000 a!1)))) 
+(minimize goal)
 (check-sat)

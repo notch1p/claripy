@@ -9284,7 +9284,7 @@
        (or a!1041 a!513)
        (or a!1042 a!513)
        (or a!1043 a!513)))))))))))))))))))))))))))))))))
-(minimize (let ((a!1 (and (= #x00000000000000b9
+(define-fun goal () (_ BitVec 64) (let ((a!1 (and (= #x00000000000000b9
                    filesize_file_3_/etc/gcrypt/hwf.deny_226_64)
                 (not (bvsge #x0000000000000000
                             filesize_file_3_/etc/gcrypt/hwf.deny_226_64))
@@ -12069,5 +12069,6 @@
                           ((_ extract 2023 2016)
                             file_3_/etc/gcrypt/hwf.deny_0_246_2040)
                           ((_ extract 47 40) mem_7fffffffffef1e0_247_64)))))
-  (bvadd (bvshl a!282 #x0000000000000001) #x00000000c0000101))))))))))))))))))))))))))))))))
+  (bvadd (bvshl a!282 #x0000000000000001) #x00000000c0000101)))))))))))))))))))))))))))))))) 
+(minimize goal)
 (check-sat)

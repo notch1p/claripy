@@ -380,11 +380,12 @@
        a!58
        a!60
        a!62)))))))))))))))))
-(minimize (bvadd (concat #x000000000000 mem_c00ab34b_247_16)
+(define-fun goal () (_ BitVec 64) (bvadd (concat #x000000000000 mem_c00ab34b_247_16)
        (concat (concat #x000000000000
                        ((_ extract 983 976)
                          file_1_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_120_1024))
                ((_ extract 991 984)
                  file_1_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_120_1024))
-       #x00000000c0080000))
+       #x00000000c0080000)) 
+(minimize goal)
 (check-sat)

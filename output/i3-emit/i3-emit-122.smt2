@@ -474,7 +474,7 @@
             |packet_0_file_14_socket ('socket', 1, 526337, 0, 2) read_1053_288|))
        a!57
        a!58))))))))))))))
-(maximize (let ((a!1 (concat (concat (concat ((_ extract 199 199)
+(define-fun goal () (_ BitVec 64) (let ((a!1 (concat (concat (concat ((_ extract 199 199)
                                      |packet_0_file_14_socket ('socket', 1, 526337, 0, 2) read_1053_288|)
                                    ((_ extract 199 199)
                                      |packet_0_file_14_socket ('socket', 1, 526337, 0, 2) read_1053_288|))
@@ -888,5 +888,6 @@
                          ((_ extract 23 16)
                            |packet_0_file_14_socket ('socket', 1, 526337, 0, 2) read_1053_288|))
                  ((_ extract 31 24)
-                   |packet_0_file_14_socket ('socket', 1, 526337, 0, 2) read_1053_288|)))))))))))))))
+                   |packet_0_file_14_socket ('socket', 1, 526337, 0, 2) read_1053_288|))))))))))))))) 
+(maximize goal)
 (check-sat)

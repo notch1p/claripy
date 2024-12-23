@@ -49,5 +49,6 @@
        (bvule strlen_66_64 #xfffffffffffffffe)
        (or (= #x0000000000000001 strlen_64_64)
            (not (= #x0000000000000000 strlen_66_64))))))
-(maximize (bvadd #x00000000c0000f89 strlen_64_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x00000000c0000f89 strlen_64_64)) 
+(maximize goal)
 (check-sat)

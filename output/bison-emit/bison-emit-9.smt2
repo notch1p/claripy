@@ -129,11 +129,12 @@
        a!15
        a!16
        (or (not a!18) (not (bvule a!19 mem_c0084154_193_16))))))))
-(maximize (bvadd (concat #x000000000000 mem_c0084154_193_16)
+(define-fun goal () (_ BitVec 64) (bvadd (concat #x000000000000 mem_c0084154_193_16)
        (concat (concat #x000000000000
                        ((_ extract 983 976)
                          file_0_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_119_1024))
                ((_ extract 991 984)
                  file_0_/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache_0_119_1024))
-       #x00000000c0080000))
+       #x00000000c0080000)) 
+(maximize goal)
 (check-sat)

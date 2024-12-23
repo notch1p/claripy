@@ -1,5 +1,6 @@
 import re
 import glob
+import sys
 
 
 def modify(fp: str):
@@ -21,5 +22,5 @@ def modify(fp: str):
         c.write(chunk1)
 
 
-for fp in glob.glob("outputp/*/*", recursive=True):
+for fp in glob.glob(f"{sys.argv[1]}", recursive=True):
     modify(fp)

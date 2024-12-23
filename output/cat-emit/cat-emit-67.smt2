@@ -35,7 +35,8 @@
        (not (= #x2d args_1_8))
        (= #b00 ((_ extract 7 6) args_1_8))
        (bvule #b0000000100 (concat args_1_8 #b00))))))))))
-(maximize (bvadd #x0000000000406a94
+(define-fun goal () (_ BitVec 64) (bvadd #x0000000000406a94
        (bvshl ((_ zero_extend 32) ((_ zero_extend 24) args_1_8))
-              #x0000000000000002)))
+              #x0000000000000002))) 
+(maximize goal)
 (check-sat)

@@ -6977,7 +6977,7 @@
        (or a!295 a!296 a!297 a!299)
        (or (not (or a!301 a!302)) a!305)
        (or a!306 a!307 a!308 a!309))))))))
-(minimize (let ((a!1 (and (= #x000001dc filesize_file_2_/_20_32)
+(define-fun goal () (_ BitVec 32) (let ((a!1 (and (= #x000001dc filesize_file_2_/_20_32)
                 (not (bvsge #x00000000 filesize_file_2_/_20_32))
                 (or (bvsge #x00000000 filesize_file_2_/_20_32)
                     (= #b0000000000000000000000
@@ -7243,5 +7243,6 @@
          (concat a!23
                  (ite a!25
                       ((_ extract 327 320) file_2_/_0_22_4096)
-                      ((_ extract 327 320) mem_7ffefa1c_23_4096))))))))
+                      ((_ extract 327 320) mem_7ffefa1c_23_4096)))))))) 
+(minimize goal)
 (check-sat)

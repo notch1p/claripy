@@ -20565,5 +20565,6 @@
        a!963
        (or a!570 a!1)
        (or a!964 a!965)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(maximize (bvadd #x07fffffffffef1df strlen_289_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1df strlen_289_64)) 
+(maximize goal)
 (check-sat)

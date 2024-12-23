@@ -3079,7 +3079,7 @@
        a!508
        a!510
        a!513)))))
-(maximize (let ((a!1 (ite (bvuge #x00000000000000ff
+(define-fun goal () (_ BitVec 64) (let ((a!1 (ite (bvuge #x00000000000000ff
                        (ite (bvsge #x0000000000000000
                                    filesize_file_10_/etc/gcrypt/fips_enabled_294_64)
                             #x0000000000000000
@@ -3089,5 +3089,6 @@
                      #x0000000000000000
                      filesize_file_10_/etc/gcrypt/fips_enabled_294_64)
                 #x00000000000000ff)))
-  (bvadd #x07fffffffffef1e0 a!1)))
+  (bvadd #x07fffffffffef1e0 a!1))) 
+(maximize goal)
 (check-sat)

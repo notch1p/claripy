@@ -276,5 +276,6 @@
        a!60
        a!61
        a!62))))))))))))))))))))))))))))))
-(minimize (bvadd mem_c0000f50_66_64 (bvmul #xffffffffffffffff mem_c0000f48_65_64)))
+(define-fun goal () (_ BitVec 64) (bvadd mem_c0000f50_66_64 (bvmul #xffffffffffffffff mem_c0000f48_65_64))) 
+(minimize goal)
 (check-sat)

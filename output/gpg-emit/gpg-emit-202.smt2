@@ -36396,5 +36396,6 @@
        (not a!990)
        (not a!1010)
        (not a!1106)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffef1db strlen_271_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1db strlen_271_64)) 
+(minimize goal)
 (check-sat)

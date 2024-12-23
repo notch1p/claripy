@@ -491,5 +491,6 @@
            (= #x00 ((_ extract 495 488) mem_c0012b42_76_1016))
            (= #x00 ((_ extract 479 472) mem_c0012b42_76_1016))
            (= #x00 ((_ extract 527 520) mem_c0012b42_76_1016)))))))))))))))))))))))))))))))))))
-(maximize (bvadd strlen_103_64 #x0000000000000001))
+(define-fun goal () (_ BitVec 64) (bvadd strlen_103_64 #x0000000000000001)) 
+(maximize goal)
 (check-sat)

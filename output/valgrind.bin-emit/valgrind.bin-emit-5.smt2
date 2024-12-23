@@ -9,5 +9,6 @@
      (not (= #x2f args_2_8))
      (= (ite (= #x00 args_2_8) #x07fffffffffeffd4 #x07fffffffffeffd5)
         (bvadd #x07fffffffffeffd4 strlen_105_64))))
-(minimize (bvadd strlen_105_64 #x0000000000000001))
+(define-fun goal () (_ BitVec 64) (bvadd strlen_105_64 #x0000000000000001)) 
+(minimize goal)
 (check-sat)

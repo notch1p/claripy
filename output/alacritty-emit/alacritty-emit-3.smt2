@@ -4,5 +4,6 @@
                (not (bvule ((_ extract 24 0) mem_c0001018_75_64)
                            #b1001100010110100111111111)))))
   (and a!1 (not (bvule #x0000000001317768 mem_c0001018_75_64)))))
-(minimize (bvadd mem_c0001018_75_64 #x0000000000000018))
+(define-fun goal () (_ BitVec 64) (bvadd mem_c0001018_75_64 #x0000000000000018)) 
+(minimize goal)
 (check-sat)

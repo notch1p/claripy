@@ -61466,7 +61466,7 @@
        a!8230
        a!8232
        a!8234)))))
-(minimize (let ((a!1 (ite (bvuge #x0000000000001013
+(define-fun goal () (_ BitVec 64) (let ((a!1 (ite (bvuge #x0000000000001013
                        (ite (bvsge #x0000000000000000
                                    filesize_file_8_/lib/jvm.cfg_526_64)
                             #x0000000000000000
@@ -61476,5 +61476,6 @@
                      #x0000000000000000
                      filesize_file_8_/lib/jvm.cfg_526_64)
                 #x0000000000001013)))
-  (bvadd #x07fffffffffeac20 a!1)))
+  (bvadd #x07fffffffffeac20 a!1))) 
+(minimize goal)
 (check-sat)

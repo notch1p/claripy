@@ -33013,5 +33013,6 @@
        a!1043
        a!1083
        (or a!1084 a!1085))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffef1e0 strlen_315_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1e0 strlen_315_64)) 
+(minimize goal)
 (check-sat)

@@ -23815,5 +23815,6 @@
            (= #x0000000000000035 strlen_271_64)
            (= #x0000000000000009 strlen_271_64))
        (not a!997)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffef1de strlen_271_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1de strlen_271_64)) 
+(minimize goal)
 (check-sat)

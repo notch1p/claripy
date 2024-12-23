@@ -63,5 +63,6 @@
        (or (= #x0000000000000001 strlen_64_64)
            (not (= #x0000000000000001 strlen_66_64)))
        a!2)))
-(maximize (bvadd #x00000000c0000f8a strlen_64_64 strlen_66_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x00000000c0000f8a strlen_64_64 strlen_66_64)) 
+(maximize goal)
 (check-sat)

@@ -8,5 +8,6 @@
      (bvule (bvadd #b00001 ((_ extract 4 0) mem_c0000f50_66_64)) #b10000)
      (bvule (bvadd #b0100010 ((_ extract 6 0) mem_c0000f50_66_64)) #b1111000)
      (= #x0000000000ff77df mem_c0000f48_65_64)))
-(maximize (bvadd mem_c0000f50_66_64 (bvmul #xffffffffffffffff mem_c0000f48_65_64)))
+(define-fun goal () (_ BitVec 64) (bvadd mem_c0000f50_66_64 (bvmul #xffffffffffffffff mem_c0000f48_65_64))) 
+(maximize goal)
 (check-sat)

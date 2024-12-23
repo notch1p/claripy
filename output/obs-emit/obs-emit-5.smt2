@@ -47,5 +47,6 @@
           ((_ extract 63 2) (bvadd #x0000000000000001 strlen_66_64)))
        (bvule (bvadd #b01 ((_ extract 1 0) strlen_66_64)) #b10)
        (bvule strlen_66_64 #xfffffffffffffffe))))
-(maximize (bvadd #x00000000c0000f89 strlen_64_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x00000000c0000f89 strlen_64_64)) 
+(maximize goal)
 (check-sat)

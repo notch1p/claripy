@@ -148,7 +148,7 @@
        (or a!17 (not (= #xfffffffffffff4f2 a!12)))
        (or a!17 (not (= #xfffffffffffff4e2 a!12)))
        (or a!17 (not (= #xfffffffffffff4d2 a!12))))))))))))))))))
-(maximize (let ((a!1 (concat (concat (concat ((_ extract 31 31)
+(define-fun goal () (_ BitVec 64) (let ((a!1 (concat (concat (concat ((_ extract 31 31)
                                      mem_ffffffc000000010_96_32)
                                    ((_ extract 31 31)
                                      mem_ffffffc000000010_96_32))
@@ -214,5 +214,6 @@
   (bvadd mem_c0000f98_86_64
          (bvmul #xffffffffffffffff mem_c0000f50_66_64)
          mem_c0000f58_91_64
-         a!12))))))))))))))
+         a!12)))))))))))))) 
+(maximize goal)
 (check-sat)

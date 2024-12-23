@@ -22205,5 +22205,6 @@
        a!1004
        (or a!506 a!1)
        (or a!1005 a!1006))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-(minimize (bvadd #x07fffffffffef1df strlen_356_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x07fffffffffef1df strlen_356_64)) 
+(minimize goal)
 (check-sat)

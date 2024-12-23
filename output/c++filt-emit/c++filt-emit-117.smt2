@@ -39,7 +39,8 @@
        (= #b000000000000000000000000000000000000000000000000000000000000000
           ((_ extract 63 1) strlen_416_64))
        (or (not (= #x00 a!1)) (= #x01 a!1) (not (= #x5f args_1_8)))))))))))))
-(maximize (let ((a!1 (bvor (concat #b0000000 (ite (= #x2e args_2_8) #b1 #b0))
+(define-fun goal () (_ BitVec 64) (let ((a!1 (bvor (concat #b0000000 (ite (= #x2e args_2_8) #b1 #b0))
                  (concat #b0000000 (ite (= #x24 args_2_8) #b1 #b0)))))
-  (bvadd #x07fffffffffeffd4 (concat #x00000000000000 a!1))))
+  (bvadd #x07fffffffffeffd4 (concat #x00000000000000 a!1)))) 
+(maximize goal)
 (check-sat)

@@ -12,7 +12,7 @@
        (not (= #x00000000 (bvnot a!1)))
        (not (= #x2f mem_7fffffffffee5b0_120_8))
        a!2)))
-(maximize (let ((a!1 (bvnot (bvor (bvnot (bvadd #xff mem_7fffffffffee5b0_120_8))
+(define-fun goal () (_ BitVec 64) (let ((a!1 (bvnot (bvor (bvnot (bvadd #xff mem_7fffffffffee5b0_120_8))
                         mem_7fffffffffee5b0_120_8
                         #x7f)))
       (a!2 ((_ extract 15 8)
@@ -36,5 +36,6 @@
                    (ite (bvule a!5 (bvmul #x02 a!5)) #b0 #b1))))
   (bvadd #xfffffffffffffffd
          (ite (and (= #x00 a!1) a!3) #x07fffffffffee5b6 #x07fffffffffee5b4)
-         (bvmul #xffffffffffffffff a!6)))))))
+         (bvmul #xffffffffffffffff a!6))))))) 
+(maximize goal)
 (check-sat)

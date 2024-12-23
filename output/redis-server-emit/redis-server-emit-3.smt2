@@ -5,5 +5,6 @@
      (= (ite (= #x00 args_2_8) #x07fffffffffeffd4 #x07fffffffffeffd5)
         (bvadd #x07fffffffffeffd4 strlen_97_64))
      (bvule (bvadd #b01 ((_ extract 1 0) strlen_97_64)) #b10)))
-(minimize (bvadd strlen_97_64 #x0000000000000001))
+(define-fun goal () (_ BitVec 64) (bvadd strlen_97_64 #x0000000000000001)) 
+(minimize goal)
 (check-sat)

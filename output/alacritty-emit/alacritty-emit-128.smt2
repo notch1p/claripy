@@ -363,7 +363,7 @@
            (= #xfffffffffffc3bb8 mem_c0000f48_65_64)
            (= #xfffffffffffc3bb4 mem_c0000f48_65_64)
            (= #xfffffffffffc3bb5 mem_c0000f48_65_64))))))))))))))))))))))))))))))))))
-(maximize (let ((a!1 (concat #x000000000000
+(define-fun goal () (_ BitVec 64) (let ((a!1 (concat #x000000000000
                    (ite (= #x0a
                            ((_ extract 127 120) mem_fffffffffffc3bb0_83_128))
                         #b1
@@ -637,5 +637,6 @@
                         (concat #x000000000000000
                                 ((_ extract 3 0) mem_c0000f48_65_64))
                         (bvmul #xffffffffffffffff mem_c0000f48_65_64)))))
-  (bvadd #x00000000c0001020 a!62)))))))))))))))))))))))))))))))
+  (bvadd #x00000000c0001020 a!62))))))))))))))))))))))))))))))) 
+(maximize goal)
 (check-sat)

@@ -175,5 +175,6 @@
           ((_ extract 63 6) (bvadd #x0000000000000001 strlen_439_64)))
        (= a!30 (bvadd #x07fffffffffeac50 strlen_439_64))
        (bvule (bvadd #b000001 ((_ extract 5 0) strlen_439_64)) #b111100)))))))))))))))))))))))))))))))))
-(minimize (bvadd #x0000000000000001 strlen_439_64))
+(define-fun goal () (_ BitVec 64) (bvadd #x0000000000000001 strlen_439_64)) 
+(minimize goal)
 (check-sat)
