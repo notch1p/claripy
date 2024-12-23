@@ -13,6 +13,7 @@ import os
 # from z3 import Solver
 from z3 import *
 from claripy.backends.backend_z3 import BackendZ3
+from sexpdata import loads, dumps
 
 
 # from IPython import embed
@@ -87,16 +88,37 @@ def main():
             call_exit()
 
 
+import re
+
+
 def splitchunks(binary_name: str, output_dir: str, filepath: str = "emit.smt2"):
     with open(filepath, "r") as f:
-        content = f.read()
+        content  = f.read()
+        content1 = f.readline()
     os.makedirs(output_dir)
     chunks = content.split("\n\n")
     for i, chunk in enumerate(chunks):
         if chunk == "":
             continue
         with open(f"{output_dir}/{binary_name}-emit-{i}.smt2", "w+") as c:
-            c.write(chunk)
+            ty = ""
+            for i in chunk: 
+                if i == "\n": break
+                if i != ";":
+                    ty += i
+            chunk1 = re.sub(
+                r"\(maximize (\(.+\))\)",
+                r"(define-fun goal () " + ty + r"\1)" + "\n(maximize goal)",
+                chunk,
+                flags=re.S,
+            )
+            chunk1 = re.sub(
+                r"\(minimize (\(.+\))\)",
+                r"(define-fun goal () " + ty + r"\1)" + "\n(minimize goal)",
+                chunk1,
+                flags=re.S,
+            )
+            c.write(chunk1)
     os.remove(filepath)
 
 

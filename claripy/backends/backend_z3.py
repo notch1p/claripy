@@ -873,6 +873,7 @@ class BackendZ3(Backend):
             a = f.assertions()
             o = z3.Optimize(f.ctx)
             o.add(z3.And(*a))
+            smt_file.write(f";{expr.sort().sexpr()}\n")
             o.maximize(expr) if is_max else o.minimize(expr)
             smt_file.write(o.sexpr())
             # if len(a) == 0:
